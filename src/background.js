@@ -16,12 +16,18 @@ function createWindow () {
     width: 800,
     height: 600,
     useContentSize: true,
+    show: false,
     frame: false, // 隐藏窗口外壳
     webPreferences: {
       nodeIntegration: true // 允许在页面调用 node api
     }
   })
   mainWindow.loadURL(winURL)
+
+  mainWindow.once('ready-to-show', () => {
+    mainWindow.show()
+    mainWindow.webContents.send('isMaximized', mainWindow.isMaximized())
+  })
 
   process.env.NODE_ENV === 'development' && mainWindow.webContents.openDevTools()
   mainWindow.on('closed', () => {

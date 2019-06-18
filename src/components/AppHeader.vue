@@ -17,17 +17,18 @@
 </template>
 
 <script>
-import store from '@/store'
-import { mapState, mapMutations } from 'vuex'
 import { ipcRenderer } from 'electron'
+import { mapState, mapMutations } from 'vuex'
+import store from '@/store'
+import * as types from '@/store/types'
 
 ipcRenderer.on('isMaximized', (event, state) => {
-  store.commit('changeMaximized', state)
+  store.commit(`app/${types.APP_CHANGE_MAXIMIZED}`, state)
 })
 
 export default {
   computed: {
-    ...mapState(['isMaximized'])
+    ...mapState('app', ['isMaximized'])
   },
   methods: {
     minimize () {
