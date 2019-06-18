@@ -1,4 +1,6 @@
-# electron-vue-with-plugin-3
+# electron-vue-with-elementui-demo
+An electron project with vue, vue-router, vuex, element-ui.
+Use vue-cli-plugin-electron-webpack to build this.
 
 ## Project setup
 ```
@@ -7,17 +9,22 @@ npm install
 
 ### Compiles and hot-reloads for development
 ```
-npm run serve
+npm run dev
 ```
 
-### Compiles and minifies for production
+### Compiles and minifies for production and run electron
 ```
-npm run build
+npm run start
 ```
 
-### Run your tests
+### Compiles and minifies for production and pack electron
 ```
-npm run test
+npm run pack
+```
+
+### Compiles and minifies for production and build electron's app
+```
+npm run builder
 ```
 
 ### Lints and fixes files
