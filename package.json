@@ -5,8 +5,19 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "builder": "npm run pack:renderer && npm run builder:main",
+    "builder:main": "webpack --progress --colors --config .electron-config/webpack.prod.js && electron-builder",
+    "dev": "npm run dev:renderer | npm run dev:main",
+    "dev:main": "webpack --progress --colors --config .electron-config/webpack.dev.js && electron .",
+    "dev:renderer": "npm run serve",
+    "pack": "npm run pack:renderer && npm run pack:main",
+    "pack:main": "webpack --progress --colors --config .electron-config/webpack.prod.js && electron-builder --dir",
+    "pack:renderer": "npm run build",
+    "start": "npm run pack:renderer && npm run start:main",
+    "start:main": "webpack --progress --colors --config .electron-config/webpack.prod.js && electron ."
   },
+  "main": "./dist/main.js",
   "dependencies": {
     "core-js": "^2.6.5",
     "vue": "^2.6.10",
@@ -19,10 +30,24 @@
     "@vue/cli-service": "^3.8.0",
     "@vue/eslint-config-standard": "^4.0.0",
     "babel-eslint": "^10.0.1",
+    "electron": "^5.0.2",
+    "electron-builder": "^20.43.0",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.1.0",
-    "vue-template-compiler": "^2.6.10"
+    "vue-cli-plugin-electron-webpack": "^1.1.2",
+    "vue-template-compiler": "^2.6.10",
+    "webpack": "^4.33.0",
+    "webpack-cli": "^3.3.2"
+  },
+  "build": {
+    "directories": {
+      "output": "build"
+    },
+    "files": [
+      "./dist/**"
+    ],
+    "asar": true
   }
 }
