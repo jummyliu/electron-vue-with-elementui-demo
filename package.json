@@ -46,7 +46,7 @@
     "sass-loader": "^7.1.0",
     "vue-cli-plugin-electron-webpack": "^1.1.2",
     "vue-cli-plugin-element": "^1.0.1",
-    "vue-cli-plugin-i18n": "^0.6.0",
+    "vue-cli-plugin-i18n": "^2.3.2",
     "vue-template-compiler": "^2.6.10",
     "webpack": "^4.33.0",
     "webpack-cli": "^3.3.2"
